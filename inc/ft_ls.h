@@ -6,7 +6,7 @@
 /*   By: sduprey <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 01:37:26 by sduprey           #+#    #+#             */
-/*   Updated: 2016/11/12 05:18:55 by sduprey          ###   ########.fr       */
+/*   Updated: 2016/11/12 05:30:48 by sduprey          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # include <dirent.h>
 # include <errno.h>
+# include <sys/stat.h>
 // CHEAT
 #include <stdio.h>
 
