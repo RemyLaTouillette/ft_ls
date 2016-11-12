@@ -14,26 +14,28 @@
 
 void	get_arguments(int ac, char **av, int i, t_ls *ls)
 {
-	struct stat	st;
+	DIR		*dir;
 
-	(void)ls;
 	while (i < ac)
 	{
-		//ft_putendl(av[i]);
-		if ((lstat(av[i], &st)) != -1)
+		if ((dir = opendir(av[i])) != NULL)
 		{
-			ft_putstr("OK: ");
-			ft_putendl(av[i]);
+			ls->dir = add_element(ls->dir, av[i]);
+			if (closedir(dir) == -1)
+			{
+				ft_putendl("ft_ls: error: closedir()");
+				exit(-1);
+			}
 		}
 		else
 		{
 			if (errno == ENOENT)
-			{
-				ft_putstr(av[i]);
-				ft_putendl(": add err list");
-			}
+				ls->err = add_element(ls->err, av[i]);
+			else if (errno == ENOTDIR)
+				ls->file = add_element(ls->file, av[i]);
+			else if (errno == EACCES)
+				ls->dir = add_element(ls->dir, av[i]);
 		}
 		i++;
 	}
-
 }

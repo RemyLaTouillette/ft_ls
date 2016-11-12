@@ -46,5 +46,7 @@ int					get_options(int ac, char **av, t_ls *ls);
 void				get_arguments(int ac, char **av, int i, t_ls *ls);
 
 t_elem				*new_element(char *name);
-
+t_elem				*add_element(t_elem *top, char *name);
+void				order_elements(t_elem *top);
+void				print_elements(t_elem *top);
 #endif
